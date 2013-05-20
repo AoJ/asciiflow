@@ -14,7 +14,6 @@
 	<classpathentry kind="lib" path="lib/jsr305.jar"/>
 	<classpathentry kind="lib" path="lib/gwt-lzma-1.0.zip"/>
 	<classpathentry kind="lib" path="lib/appengine-utils-client-1.1.jar"/>
-	<classpathentry kind="lib" path="lib/appengine-utils-server-1.1.jar"/>
-	<classpathentry kind="con" path="com.google.appengine.eclipse.core.GAE_CONTAINER/App Engine (1)"/>
+	<classpathentry kind="con" path="com.google.appengine.eclipse.core.GAE_CONTAINER"/>
 	<classpathentry kind="output" path="war/WEB-INF/classes"/>
 </classpath>

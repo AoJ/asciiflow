@@ -9,9 +9,8 @@ import java.util.Random;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
-import org.datanucleus.store.appengine.query.JDOCursorHelper;
-
 import com.google.appengine.api.datastore.Cursor;
+import com.google.appengine.datanucleus.query.JPACursorHelper;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import com.lewish.asciiflow.client.StoreService;
 import com.lewish.asciiflow.shared.AccessException;
@@ -93,7 +92,7 @@ public class StoreServiceImpl extends RemoteServiceServlet implements StoreServi
 		if (cursorString != null) {
 			Cursor cursor = Cursor.fromWebSafeString(cursorString);
 			Map<String, Object> extensionMap = new HashMap<String, Object>();
-			extensionMap.put(JDOCursorHelper.CURSOR_EXTENSION, cursor);
+			extensionMap.put(JPACursorHelper.CURSOR_HINT, cursor);
 			query.setExtensions(extensionMap);
 		}
 
@@ -102,7 +101,7 @@ public class StoreServiceImpl extends RemoteServiceServlet implements StoreServi
 		try {
 			@SuppressWarnings("unchecked")
 			List<State> states = (List<State>) query.execute();
-			Cursor cursor = JDOCursorHelper.getCursor(states);
+			Cursor cursor = JPACursorHelper.getCursor(states);
 			newCursorString = cursor.toWebSafeString();
 			cleanStates = new ArrayList<State>(pm.detachCopyAll(states));
 		} finally {
